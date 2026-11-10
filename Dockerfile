@@ -61,12 +61,12 @@ FROM build-${TARGETARCH}
 ARG VERSION_ARG="0.00"
 RUN echo "$VERSION_ARG" > /etc/version
 
-VOLUME /storage
+# VOLUME removed: Railway does not support it. Add a Railway Volume mounted at /storage instead.
 EXPOSE 3389 8006
 
 ENV VERSION="11"
-ENV RAM_SIZE="4G"
-ENV CPU_CORES="2"
-ENV DISK_SIZE="64G"
+ENV RAM_SIZE="16G"
+ENV CPU_CORES="4"
+ENV DISK_SIZE="500G"
 
 ENTRYPOINT ["/usr/bin/tini", "-s", "/run/entry.sh"]
